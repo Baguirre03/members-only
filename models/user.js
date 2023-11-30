@@ -2,16 +2,18 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
 const userSchema = new Schema({
-    user: '',
-    password: '',
-    firstName: '',
-    lastName: '',
-    username: '',
-    membership: null,
+    password: { type: String, required: true },
+    firstName: { type: String, required: true },
+    lastName: { type: String, required: false },
+    membership: { type: Boolean },
 })
 
-user.virtual('url', function () {
+userSchema.virtual('url', function () {
     return `/profile/${this._id}`
+})
+
+userSchema.virtual('username', function () {
+    return `${this.firstName} ${this.lastName}`
 })
 
 module.exports = mongoose.model('user', userSchema)
