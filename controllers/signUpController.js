@@ -11,11 +11,7 @@ exports.signup_get = asyncHandler(async (req, res, next) => {
 })
 
 exports.signup_post = [
-    body('first_name')
-        .trim()
-        .isLength({ min: 1 })
-        .escape(),
-    body('last_name')
+    body('username')
         .trim()
         .isLength({ min: 1 })
         .escape(),
@@ -27,7 +23,6 @@ exports.signup_post = [
         .trim()
         .isLength({ min: 1 })
         .custom((value, { req, loc, path }) => {
-            console.log(req.body, value)
             if (value !== req.body.password) {
                 throw new Error("Passwords don't match");
             } else {
@@ -38,7 +33,6 @@ exports.signup_post = [
     asyncHandler(async (req, res, next) => {
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
-            console.log(errors)
             res.render("sign-up", {
                 title: "Sign Up",
                 errors: errors.array()
@@ -47,8 +41,7 @@ exports.signup_post = [
             bcrypt.hash(req.body.password, 10, async (err, hashedPassword) => {
                 try {
                     const user = new User({
-                        firstName: req.body.first_name,
-                        lastName: req.body.last_name,
+                        username: req.body.username,
                         password: hashedPassword,
                         membership: false,
                     })
