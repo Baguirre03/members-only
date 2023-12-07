@@ -2,9 +2,14 @@ extends layout
 
 block content
     h1= title
-    if user.membership  
-        h2 Welcome back #{user.username} you are a member 
+    if user
+        if user.membership && user
+            h2 Welcome back #{user.username} you are a member 
+        else 
+            h3 Welcome back #{user.username} you are #[em not] a member
+        a(href=`messages/ + ${user._id}`) Wanna see all the messages you have sent?
     else 
-        h3 Welcome back #{user.username} you are #[em not] a member
+        You havent logged in, go login  here: 
+        a(href="/log-in") Login
     h3 messages here:
    
