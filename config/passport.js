@@ -1,6 +1,7 @@
 const passport = require('passport')
 const LocalStrategy = require("passport-local").Strategy;
 const bcrypt = require('bcryptjs')
+const User = require('../models/user')
 
 passport.use(
     new LocalStrategy(async (username, password, done) => {
@@ -32,3 +33,9 @@ passport.deserializeUser(async (id, done) => {
         done(err)
     }
 })
+
+exports.authenticate = passport.authenticate('local', {
+    successRedirect: '/',
+    failureRedirect: '/log-in/failed'
+})
+
