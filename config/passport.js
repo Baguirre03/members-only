@@ -34,6 +34,17 @@ passport.deserializeUser(async (id, done) => {
     }
 })
 
+exports.logout = [
+    async (req, res, next) => {
+        req.logout((err) => {
+            if (err) {
+                return next(err)
+            }
+            res.redirect('/')
+        })
+    }
+]
+
 exports.authenticate = passport.authenticate('local', {
     successRedirect: '/messages',
     failureRedirect: '/log-in/failed'

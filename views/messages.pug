@@ -34,8 +34,13 @@ block content
                 if user && user.membership
                     li  #{message.text} + #{message.user.username}
                 else 
-                    li #{message.text}
+                    li #{message.text} Written by ANONYMOUS at ANON time 
     else   
         p Write the first message
+
+    if !user.membership 
+        Join the club 
+        a(href="/join-club") 
+        to see the date and who the messages were written by 
         
-   
+    a(href="/") Back home
