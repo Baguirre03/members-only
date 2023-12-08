@@ -5,6 +5,6 @@ const messagesController = require('../controllers/messageController')
 
 
 router.get('/', messagesController.messages_get)
-// router.post('/', signupController.signup_post)
+router.post('/', messagesController.messages_post)
 
 module.exports = router

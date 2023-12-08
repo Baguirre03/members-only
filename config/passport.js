@@ -35,7 +35,7 @@ passport.deserializeUser(async (id, done) => {
 })
 
 exports.authenticate = passport.authenticate('local', {
-    successRedirect: '/',
+    successRedirect: '/messages',
     failureRedirect: '/log-in/failed'
 })
 
