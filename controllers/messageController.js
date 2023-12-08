@@ -4,8 +4,7 @@ const { body, validationResult } = require('express-validator')
 
 
 exports.messages_get = asyncHandler(async (req, res, next) => {
-    const allMessages = await Message.find({}).sort({ time: 1 }).populate('user')
-    console.log(allMessages)
+    const allMessages = await Message.find({}).sort({ time: -1 }).populate('user')
     res.render('messages', {
         title: "Welcome to the message homepage",
         user: req.user,
@@ -29,7 +28,7 @@ exports.messages_post = [
         }
         const message = new Message(messageSchema)
         if (!errors.isEmpty()) {
-            const allMessages = await Message.find({}).sort({ time: 1 }).populate('user')
+            const allMessages = await Message.find({}).sort({ time: -1 }).populate('user')
             res.render('messages', {
                 title: "Welcome to the message home page",
                 user: req.user,
@@ -38,7 +37,7 @@ exports.messages_post = [
             })
         } else {
             await message.save()
-            const allMessages = await Message.find({}).sort({ time: 1 }).populate('user')
+            const allMessages = await Message.find({}).sort({ time: -1 }).populate('user')
             res.render('messages', {
                 title: "Welcome to the message home page",
                 user: req.user,
