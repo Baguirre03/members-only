@@ -5,7 +5,7 @@ const passportController = require('../config/passport.js')
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
-  res.render('index', { title: 'Home Page', user: req.user });
+  res.render('index', { title: 'Members only', user: req.user });
 });
 
 module.exports = router;
