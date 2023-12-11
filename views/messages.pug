@@ -39,7 +39,7 @@ block content
     else   
         p Write the first message
 
-    if !user.membership 
+    if user && !user.membership 
         <a href='/joinclub'>Join the #[bold special] club now</a> to see the date and who the messages were written by 
     br
     a(href="/") Back home

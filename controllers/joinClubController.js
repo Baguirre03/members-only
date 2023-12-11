@@ -34,15 +34,12 @@ exports.post_joinclub = [
                 $set: {
                     membership: true
                 }
-            });
-            const user = await User.find({ _id: req.user._id })
-            console.log(user)
-            res.render('messages', {
-                title: "Messages",
-                user: req.user,
-                messages: await Message.find({}).exec()
+            })
+            const user = await User.findById(req.user._id)
+            req.login(user, function (err) {
+                if (err) { return next(err); }
+                return res.redirect('/messages');
             })
         }
-
     })
 ]

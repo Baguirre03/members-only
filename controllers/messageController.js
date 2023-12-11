@@ -7,8 +7,8 @@ exports.messages_get = asyncHandler(async (req, res, next) => {
     const allMessages = await Message.find({}).sort({ time: -1 }).populate('user')
     res.render('messages', {
         title: "Welcome to the message homepage",
+        messages: allMessages,
         user: req.user,
-        messages: allMessages
     })
 })
 
@@ -31,8 +31,8 @@ exports.messages_post = [
             const allMessages = await Message.find({}).sort({ time: -1 }).populate('user')
             res.render('messages', {
                 title: "Welcome to the message home page",
-                user: req.user,
                 errors: errors.array(),
+                user: req.user,
                 messages: allMessages
             })
         } else {
@@ -40,8 +40,8 @@ exports.messages_post = [
             const allMessages = await Message.find({}).sort({ time: -1 }).populate('user')
             res.render('messages', {
                 title: "Welcome to the message home page",
-                user: req.user,
-                messages: allMessages
+                messages: allMessages,
+                user: req.user
             })
         }
     })
