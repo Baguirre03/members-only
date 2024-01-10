@@ -6,13 +6,6 @@ block content
         if user.membership && user
             h2 Welcome back #{user.username} you #[bold are] a member
             p Meaning you #[em can] see who sent these messages
-
-            h4 Post a message: 
-            form(method="POST" ) 
-                div.form-group
-                    label(for="message") 
-                    input(type="text" placeholder='Type your message here' name="message" required="true")
-                button(type="submit") Post message
         else 
             h3 Welcome back #{user.username} you are #[bold not] a member
             p Meaning you #[em cannot] see who sent these messages
@@ -23,23 +16,25 @@ block content
                     input(type="text" placeholder='Type your message here' name="message" required="true")
                 button(type="submit") Post message
     else 
-        You havent logged in, go login  here: 
-        a(href="/log-in") Login
+        You havent logged in yet!
 
 
-    h3 messages here:
     if messages.length
-        ul 
+        ul(class="message-container") 
+            form(method="POST" class="message-form") 
+                label(for="message") 
+                input(type="text" placeholder='Type your message here' name="message" required="true")
+                button(type="submit") Post message
             for message in messages
                 if user && user.membership
-                    li  #{message.text} + #{message.user.username}
+                    div(class="message")
+                        li #{message.text} + #{message.user.username}
                 else 
-                    li Written by #[em ANONYMOUS]  at #[em ANONYMOUS] time 
-                    | #{message.text} 
+                    div(class="message")
+                        li Written by #[em ANONYMOUS]  at #[em ANONYMOUS] time 
+                        | #{message.text} 
     else   
         p Write the first message
 
     if user && !user.membership 
         <a href='/joinclub'>Join the #[bold special] club now</a> to see the date and who the messages were written by 
-    br
-    a(href="/") Back home

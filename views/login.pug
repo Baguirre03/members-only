@@ -1,18 +1,18 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
-    form(action="/log-in" method="POST") 
-        label(for="username") Username
-        input(type="text", placeholder='Username', name='username') 
-        br
-        label(for="password") Password 
-        input(type="password", placeholder='Password', name='password') 
-        br
-        button Log In
-  if errors
-    p #{errors}
-  a(href="/") Back to home 
-  br
-  a(href='/sign-up') Haven't signed up yet? Join here!
+  div.sign-up
+    div.header-card
+      h1= title
+    form(action="/log-in" method="POST", class="card-form")
+        div.input 
+          input(type="text" name='username', class="input-field" required) 
+          label(for="username", class="input-label") Username
+        div.input
+          input(type="password" name='password', class="input-field" required) 
+          label(for="password", class="input-label") Password 
+        div.action
+          button(type="submit", class="action-button") Log In
+  div.errors
+    if errors
+      p #{errors}

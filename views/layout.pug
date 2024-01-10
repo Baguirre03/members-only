@@ -4,4 +4,19 @@ html
     title= title
     link(rel='stylesheet', href='/stylesheets/style.css')
   body
-    block content
+    nav.nav
+      div.left
+        a(href="/") Home
+        a(href="/messages") Messages
+      if user 
+        div.right
+          a(href="/logout") Log-out
+      else
+        div.right
+          a(href="/sign-up") Sign-up
+          br
+          a(href="/log-in") Log-in
+          br
+    div(class='content')
+      block content
+

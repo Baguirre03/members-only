@@ -9,7 +9,6 @@ const passport = require("passport");
 require('dotenv').config()
 
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
 const loginRouter = require('./routes/login')
 const signupRouter = require('./routes/signup')
 const messageRouter = require('./routes/messages')
