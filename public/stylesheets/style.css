@@ -127,9 +127,9 @@ ul {
   max-width: 425px;
   background-color: #FFF;
   border-radius: 10px;
-  box-shadow: 0 10px 20px 0 rgba(#999, .25);
   padding: .75rem;
   gap: 10px;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 }
 
 .input {
@@ -193,6 +193,12 @@ ul {
 
 .action-button:hover {
   cursor: pointer;
+  background-color: white;
+  color: black;
+  outline: black 1px solid;
+  box-shadow: 2px 2px 2px black;
+  transition: background-color .3s;
+
 }
 
 .card-form {
