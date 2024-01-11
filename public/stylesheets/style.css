@@ -106,13 +106,17 @@ ul {
 
 .message {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
   padding: 1rem;
   background-color: var(--white);
   height: 80px;
   border-radius: 1rem;
+  gap: 3px;
+}
+
+.message-text {
+  font-size: 1.2rem;
 }
 
 .message-form {
@@ -229,4 +233,24 @@ ul {
 input {
   appearance: none;
   border-radius: 0;
+}
+
+.join-container {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+
+.join,
+.join:visited {
+  padding: 6px;
+  background-color: var(--grey);
+  color: var(--darkRed);
+}
+
+.join:hover,
+.join:visited:hover {
+  color: var(--white);
+  background-color: var(--lightRed);
+  transition: all .2s;
 }

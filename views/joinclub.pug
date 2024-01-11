@@ -4,15 +4,10 @@ block content
   h1= title
     if user
         h3 Hey #{user.username}, you are not a member yet!
-    else 
-        h3 Signup to join the club first!!
 
-    h3 Try to  guess the #[em super secret] password to join the #[super secret] club!
+    h3 Try to  guess the #[em super secret] password to join the #[super secret] club! 
+    h3 (If you really want to know its "top") but all CAPS
 
     form(action="" method="POST") 
       label(for="secret_password") 
       input(type="text", name="secret_password", placeholder="Secret Password")
-
-  a(href="/") Back to home 
-  br
-  a(href='/sign-up') Haven't signed up yet? Join here!

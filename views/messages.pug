@@ -1,15 +1,15 @@
 extends layout
 
 block content
-    h1= title
     if user
         if user.membership && user
             h2 Welcome back #{user.username} you #[bold are] a member
-            h2 meaning you #[em can] see who sent these messages
+            h2 meaning you #[em can] see who sent these messages and when they were sent!
             br
         else 
             h2 Welcome back #{user.username} you are #[bold not] a member
-            h2 meaning you #[em cannot] see who sent these messages and when!
+            h2 meaning you #[em cannot] see who sent these messages and when they were sent!
+            h2(class="join-container") Join the <a href='/joinclub' class="join">SPECIAL CLUB</a> to see who  wrote the messages!
             br
     else 
         h1(class="login") You havent created an account or logged in, do either to see the messages!
@@ -29,6 +29,3 @@ block content
                     div(class="message")
                         div(class="message-text") #{message.text} 
                         div(class="written-by") Written by #[em ANONYMOUS]  at #[em ANONYMOUS] time 
-
-    if user && !user.membership 
-        <a href='/joinclub'>Join the #[bold special] club now</a> to see the date and who the messages were written by 
