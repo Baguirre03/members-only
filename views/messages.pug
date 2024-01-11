@@ -5,36 +5,30 @@ block content
     if user
         if user.membership && user
             h2 Welcome back #{user.username} you #[bold are] a member
-            p Meaning you #[em can] see who sent these messages
+            h2 meaning you #[em can] see who sent these messages
+            br
         else 
-            h3 Welcome back #{user.username} you are #[bold not] a member
-            p Meaning you #[em cannot] see who sent these messages
-            h4 Post a message: 
-            form(method="POST" ) 
-                div.form-group
-                    label(for="message") 
-                    input(type="text" placeholder='Type your message here' name="message" required="true")
-                button(type="submit") Post message
+            h2 Welcome back #{user.username} you are #[bold not] a member
+            h2 meaning you #[em cannot] see who sent these messages and when!
+            br
     else 
-        You havent logged in yet!
+        h1(class="login") You havent created an account or logged in, do either to see the messages!
 
 
-    if messages.length
+    if messages.length && user
         ul(class="message-container") 
             form(method="POST" class="message-form") 
-                label(for="message") 
                 input(type="text" placeholder='Type your message here' name="message" required="true")
                 button(type="submit") Post message
             for message in messages
                 if user && user.membership
                     div(class="message")
-                        li #{message.text} + #{message.user.username}
+                        div(class="message-text") #{message.text} 
+                        div(class="written-by") Written by #{message.user.username} on #{message.date_formatted}
                 else 
                     div(class="message")
-                        li Written by #[em ANONYMOUS]  at #[em ANONYMOUS] time 
-                        | #{message.text} 
-    else   
-        p Write the first message
+                        div(class="message-text") #{message.text} 
+                        div(class="written-by") Written by #[em ANONYMOUS]  at #[em ANONYMOUS] time 
 
     if user && !user.membership 
         <a href='/joinclub'>Join the #[bold special] club now</a> to see the date and who the messages were written by 

@@ -1,8 +1,11 @@
 extends layout
 
 block content
-  h1= title
+  h1 Welcome to Members Only!
   if user 
-    h1 Welcome back #{user.username}
+    h2 Welcome back #{user.username}
+    p We are so happy to have you here!
   else 
-    p Welcome to #{title} you should probably sign-up!
+    br
+    h2 You should probably sign-up! 
+    h2 Then you may be able to join the SECRET club!
