@@ -1,13 +1,14 @@
 extends layout
 
 block content
-  h1= title
+  div.content-2
     if user
-        h3 Hey #{user.username}, you are not a member yet!
-
-    h3 Try to  guess the #[em super secret] password to join the #[super secret] club! 
-    h3 (If you really want to know its "top") but all CAPS
-
-    form(action="" method="POST") 
-      label(for="secret_password") 
-      input(type="text", name="secret_password", placeholder="Secret Password")
+      div.title
+        h2 Hey #{user.username}, you are not a member yet! You should join the club today!
+    div.password
+      h2  Try to  guess the #[em super secret] password to join the #[super secret] club! 
+      h2 (If you really want to know its "top") but all caps lol!
+    div.form-pass
+      form(action="" method="POST") 
+        label(for="secret_password") 
+        input(type="text", name="secret_password", placeholder="Secret Password")
