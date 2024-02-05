@@ -57,9 +57,5 @@ exports.messages_delete_get = asyncHandler(async (req, res, next) => {
 
 exports.messages_delete_post = asyncHandler(async(req, res, next) => {
     await Message.findByIdAndDelete(req.params.id).exec()
-    const allMessages = await Message.find({}).sort({ time: -1 }).populate('user')
-    res.render('messages', {
-        title: "Welcome to the message homepage",
-        messages: allMessages,
-        user: req.user,
-    })})
+    res.redirect('/messages')
+})
