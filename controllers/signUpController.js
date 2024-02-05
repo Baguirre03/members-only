@@ -14,7 +14,15 @@ exports.signup_post = [
     body('username')
         .trim()
         .isLength({ min: 1 })
-        .escape(),
+        .escape()
+        .custom(async (value, {req, loc, path}) => {
+            const user = await User.findOne({username: req.body.username.toLowerCase()})
+            if(user) {
+                throw new Error("Username is taken!")
+            } else {
+                return value
+            }
+        }),
     body('password')
         .trim()
         .isLength({ min: 1 })
@@ -41,7 +49,7 @@ exports.signup_post = [
             bcrypt.hash(req.body.password, 10, async (err, hashedPassword) => {
                 try {
                     const user = new User({
-                        username: req.body.username,
+                        username: req.body.username.toLowerCase(),
                         password: hashedPassword,
                         membership: false,
                     })

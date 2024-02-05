@@ -275,3 +275,16 @@ input {
   text-align: center;
   padding: .2rem .7rem .2rem .7rem;
 }
+
+.delete-message {
+  border: 2px solid black;
+  color: black;
+}
+
+.delete-message:visited {
+  color: black;
+}
+
+.delete-message:hover {
+  color: white;
+}

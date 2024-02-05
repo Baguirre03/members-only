@@ -48,10 +48,10 @@ exports.messages_post = [
 ]
 
 exports.messages_delete_get = asyncHandler(async (req, res, next) => {
-    const message = await Message.findById(req.params.id).exec()
+    const message = await Message.findById(req.params.id).populate('user').exec()
     res.render('messages_delete', {
         title: "Delete Message",
-        message: message
+        message: message,
     })
 })
 
