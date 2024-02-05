@@ -25,6 +25,8 @@ block content
                     div(class="message")
                         div(class="message-text") #{message.text} 
                         div(class="written-by") Written by #{message.user.username} on #{message.date_formatted}
+                    if user.username == "rayray"
+                        a(href="/messages" + message.url) Delete message
                 else 
                     div(class="message")
                         div(class="message-text") #{message.text} 

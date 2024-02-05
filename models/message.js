@@ -12,4 +12,8 @@ messageSchema.virtual('date_formatted').get(function () {
     return DateTime.fromJSDate(this.time).toLocaleString(DateTime.DATETIME_MED);
 })
 
+messageSchema.virtual('url').get(function () {
+    return `/${this._id}/delete`
+})
+
 module.exports = mongoose.model('message', messageSchema)

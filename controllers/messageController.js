@@ -46,3 +46,20 @@ exports.messages_post = [
         }
     })
 ]
+
+exports.messages_delete_get = asyncHandler(async (req, res, next) => {
+    const message = await Message.findById(req.params.id).exec()
+    res.render('messages_delete', {
+        title: "Delete Message",
+        message: message
+    })
+})
+
+exports.messages_delete_post = asyncHandler(async(req, res, next) => {
+    await Message.findByIdAndDelete(req.params.id).exec()
+    const allMessages = await Message.find({}).sort({ time: -1 }).populate('user')
+    res.render('messages', {
+        title: "Welcome to the message homepage",
+        messages: allMessages,
+        user: req.user,
+    })})
