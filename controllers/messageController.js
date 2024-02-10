@@ -16,7 +16,6 @@ exports.messages_post = [
     body('message')
         .trim()
         .isLength({ min: 1 })
-        .escape()
         .withMessage('Atleast one character is required in message'),
 
     asyncHandler(async (req, res, next) => {
